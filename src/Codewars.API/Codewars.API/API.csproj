@@ -46,14 +46,19 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodewarsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Responses\TrainingSessionResponse.cs" />
-    <Compile Include="Responses\GetCodeChallenge.cs" />
-    <Compile Include="Responses\GetUserResponse.cs" />
+    <Compile Include="Requests\LanguageTypes.cs" />
+    <Compile Include="Requests\OutputFormats.cs" />
+    <Compile Include="Responses\AttemptSolutionResponse.cs" />
+    <Compile Include="Responses\DeferredResponse.cs" />
+    <Compile Include="Responses\Session.cs" />
+    <Compile Include="Responses\StrategyTypes.cs" />
+    <Compile Include="Responses\TrainCodeChallenge.cs" />
+    <Compile Include="Responses\CodeChallenge.cs" />
+    <Compile Include="Responses\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

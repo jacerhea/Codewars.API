@@ -28,7 +28,7 @@ namespace Codewars.API.Responses
     }
 
     [DataContract]
-    public class GetCodeChallenge
+    public class CodeChallenge
     {
         [DataMember(Name = "id")]
         public string Id { get; set; }
