@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "Codewars.API\API.csproj", "{D4149BFC-538D-4663-B829-7CE781E56EF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codewars.API.IntegrationTests", "Codewars.API.IntegrationTests\Codewars.API.IntegrationTests.csproj", "{A30E51D6-22BC-44AE-B8E2-B6192A344843}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.IntegrationTests", "Codewars.API.IntegrationTests\API.IntegrationTests.csproj", "{A30E51D6-22BC-44AE-B8E2-B6192A344843}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

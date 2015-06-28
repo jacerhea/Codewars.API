@@ -33,6 +33,6 @@ namespace Codewars.API.Responses
         /// If the user is continuing a previous started solution, this value will represent their previous work.
         /// </summary>
         [DataMember(Name = "code")]
-        public object Code { get; set; }
+        public string Code { get; set; }
     }
 }

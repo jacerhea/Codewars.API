@@ -11,7 +11,7 @@ namespace Codewars.API.IntegrationTests
         public static string APIKey = "Enter your API Key Here";
 
         [TestMethod]
-        public void GetUserTest()
+        public void GetUserReturnsExpectedInformation()
         {
             var client = new CodewarsClient(APIKey);
             var response = client.GetUser("jacerhea");

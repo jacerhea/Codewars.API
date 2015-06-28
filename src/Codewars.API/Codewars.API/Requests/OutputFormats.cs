@@ -11,13 +11,13 @@ namespace Codewars.API.Requests
         /// <summary>
         /// Html format
         /// </summary>
-        [EnumMemberAttribute(Value = "html")]
+        [EnumMember(Value = "html")]
         Html,
 
         /// <summary>
         /// raw format
         /// </summary>
-        [EnumMemberAttribute(Value = "raw")]
+        [EnumMember(Value = "raw")]
         Raw
     }
 }
