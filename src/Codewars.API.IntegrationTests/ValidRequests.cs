@@ -8,7 +8,7 @@ namespace Codewars.API.IntegrationTests
     [TestClass]
     public class ValidRequests
     {
-        public static string APIKey = "Enter your API Key Here";
+        public static string APIKey = "TNxxpDS7tUxk3cFozSGT";
 
         [TestMethod]
         public void GetUserReturnsExpectedInformation()
