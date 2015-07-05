@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace Codewars.API
 {
     /// <summary>
-    /// Simplifies access to the complete version 1 of the Codewars API.
+    /// Simplifies access to the Codewars API version 1.
     /// </summary>
     public class CodewarsClient
     {
         private readonly HttpClient _client;
         private static readonly JsonMediaTypeFormatter JsonFormatter = new JsonMediaTypeFormatter();
+        const string CodewarsComApiV1 = "https://www.codewars.com/api/v1/";
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CodewarsClient"/> class.
@@ -22,8 +24,7 @@ namespace Codewars.API
         public CodewarsClient(string apiKey)
         {
             if (apiKey == null) throw new ArgumentNullException(nameof(apiKey));
-            const string codewarsComApiV1 = "https://www.codewars.com/api/v1/";
-            _client = new HttpClient { BaseAddress = new Uri(codewarsComApiV1) };
+            _client = new HttpClient { BaseAddress = new Uri(CodewarsComApiV1) };
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(apiKey);
         }
 

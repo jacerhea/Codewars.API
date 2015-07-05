@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Codewars.API")]
-[assembly: AssemblyDescription("A .net client for using the codewars. com api.")]
+[assembly: AssemblyDescription("A .net client for using the codewars.com api.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Monadic Software")]
 [assembly: AssemblyProduct("Codewars.API")]
