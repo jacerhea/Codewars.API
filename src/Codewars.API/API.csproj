@@ -51,7 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodewarsClient.cs" />
+    <Compile Include="Events\ActionType.cs" />
+    <Compile Include="Events\HonorChanged.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Events\RankUpgraded.cs" />
     <Compile Include="Requests\LanguageTypes.cs" />
     <Compile Include="Requests\OutputFormats.cs" />
     <Compile Include="Responses\AttemptSolutionResponse.cs" />

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Codewars.API.Responses
+namespace Codewars.API
 {
     /// <summary>
     /// Information about a specific user.
@@ -16,7 +16,7 @@ namespace Codewars.API.Responses
         public string UserName { get; set; }
 
         /// <summary>
-        /// Display name of the user.
+        /// Display name.
         /// </summary>
         [DataMember(Name = "name")]
         public string Name { get; set; }
@@ -120,9 +120,15 @@ namespace Codewars.API.Responses
     [DataContract]
     public class Ranks
     {
+        /// <summary>
+        /// Overall rank.
+        /// </summary>
         [DataMember(Name = "overall")]
         public RankInformation Overall { get; set; }
 
+        /// <summary>
+        /// Rank among several languages.
+        /// </summary>
         [DataMember(Name = "languages")]
         public LanguagesRank Languages { get; set; }
     }

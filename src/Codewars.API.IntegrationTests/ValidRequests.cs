@@ -8,12 +8,12 @@ namespace Codewars.API.IntegrationTests
     [TestClass]
     public class ValidRequests
     {
-        public static string APIKey = "TNxxpDS7tUxk3cFozSGT";
+        public static string ApiKey = "TNxxpDS7tUxk3cFozSGT";
 
         [TestMethod]
         public void GetUserReturnsExpectedInformation()
         {
-            var client = new CodewarsClient(APIKey);
+            var client = new CodewarsClient(ApiKey);
             var response = client.GetUser("jacerhea");
             var userResponse = response.Result;
             Assert.AreEqual("Monadic Software", userResponse.Clan);
@@ -27,7 +27,7 @@ namespace Codewars.API.IntegrationTests
         [TestMethod]
         public void GetCodeChallengeTest()
         {
-            var client = new CodewarsClient(APIKey);
+            var client = new CodewarsClient(ApiKey);
             var response = client.GetCodeChallenge("valid-braces");
             var codeChallenge = response.Result;
 
@@ -42,7 +42,7 @@ namespace Codewars.API.IntegrationTests
         {
             try
             {
-                var client = new CodewarsClient(APIKey);
+                var client = new CodewarsClient(ApiKey);
                 var response = client.GetDeferredResponse("this is a bad dmId");
                 var codeChallenge = response.Result;
                 Assert.Fail();

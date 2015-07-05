@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Codewars.API.Responses
+namespace Codewars.API
 {
     /// <summary>
     /// Code challenge (kata)

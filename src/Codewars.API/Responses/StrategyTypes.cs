@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Codewars.API.Responses
+namespace Codewars.API
 {
     /// <summary>
     /// Values for selecting a code challenge selection strategy

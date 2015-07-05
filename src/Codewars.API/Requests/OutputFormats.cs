@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Codewars.API.Requests
+namespace Codewars.API
 {
     /// <summary>
     /// The output format to be used. By default, html is used. raw can also be specified.
@@ -9,13 +9,13 @@ namespace Codewars.API.Requests
     public enum OutputFormats
     {
         /// <summary>
-        /// Html format
+        /// Html format.
         /// </summary>
         [EnumMember(Value = "html")]
         Html,
 
         /// <summary>
-        /// raw format
+        /// Raw format.
         /// </summary>
         [EnumMember(Value = "raw")]
         Raw

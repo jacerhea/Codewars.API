@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Codewars.API.Responses
+namespace Codewars.API
 {
     /// <summary>
     ///  A deferred message id (dmid) which will be used to poll for the response. Polling must be used to retrieve the response.
@@ -9,7 +9,7 @@ namespace Codewars.API.Responses
     public class AttemptSolutionResponse
     {
         /// <summary>
-        /// Submission was successfully received
+        /// Submission was successfully received.
         /// </summary>
         [DataMember(Name = "success")]
         public bool Success { get; set; }

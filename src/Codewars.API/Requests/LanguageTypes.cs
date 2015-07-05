@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Codewars.API.Requests
+namespace Codewars.API
 {
     /// <summary>
     /// Codewars supports a number of languages, with more coming soon.

@@ -3,13 +3,11 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Codewars.API.Requests;
-using Codewars.API.Responses;
 
 namespace Codewars.API
 {
     /// <summary>
-    /// Simplifies access to the complete Codewars API.
+    /// Simplifies access to the complete version 1 of the Codewars API.
     /// </summary>
     public class CodewarsClient
     {
@@ -23,8 +21,9 @@ namespace Codewars.API
         /// <exception cref="System.ArgumentNullException">apiUri</exception>
         public CodewarsClient(string apiKey)
         {
-            if (apiKey == null) throw new ArgumentNullException("apiKey");
-            _client = new HttpClient { BaseAddress = new Uri("https://www.codewars.com/api/v1/") };
+            if (apiKey == null) throw new ArgumentNullException(nameof(apiKey));
+            const string codewarsComApiV1 = "https://www.codewars.com/api/v1/";
+            _client = new HttpClient { BaseAddress = new Uri(codewarsComApiV1) };
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(apiKey);
         }
 
@@ -35,7 +34,7 @@ namespace Codewars.API
         /// <returns>Task that will yield information about a specific user</returns>
         public async Task<User> GetUser(string userName)
         {
-            var response = await _client.GetAsync("users" + string.Format("/{0}", userName));
+            var response = await _client.GetAsync("users" + $"/{userName}");
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<User>();
             return responseResult;
@@ -48,7 +47,7 @@ namespace Codewars.API
         /// <returns>Task that will yield information about a specific code challenge (kata)</returns>
         public async Task<CodeChallenge> GetCodeChallenge(string userNameOrSlug)
         {
-            var response = await _client.GetAsync("code-challenges" + string.Format("/{0}", userNameOrSlug));
+            var response = await _client.GetAsync("code-challenges" + $"/{userNameOrSlug}");
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<CodeChallenge>();
             return responseResult;
@@ -63,9 +62,9 @@ namespace Codewars.API
         /// <returns>Task that will yield the TrainCodeChallenge</returns>
         public async Task<TrainCodeChallenge> BeginNextTrainingSession(string language, StrategyTypes? strategy = null, bool peek = false)
         {
-            if (language == null) { throw new ArgumentNullException("language"); }
-            if (string.IsNullOrWhiteSpace(language)) { throw new ArgumentOutOfRangeException("language"); }
-            var response = await _client.PostAsync(string.Format("code-challenges/{0}", language), new { language, strategy, peek }, JsonFormatter);
+            if (language == null) { throw new ArgumentNullException(nameof(language)); }
+            if (string.IsNullOrWhiteSpace(language)) { throw new ArgumentOutOfRangeException(nameof(language)); }
+            var response = await _client.PostAsync($"code-challenges/{language}", new { language, strategy, peek }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<TrainCodeChallenge>();
             return responseResult;
@@ -78,7 +77,7 @@ namespace Codewars.API
         /// <returns>Task that will yield the TrainCodeChallenge</returns>
         public async Task<TrainCodeChallenge> BeginTrainingSession(LanguageTypes language)
         {
-            var response = await _client.PostAsync(string.Format("code-challenges/{0}", language), new { language }, JsonFormatter);
+            var response = await _client.PostAsync($"code-challenges/{language}", new { language }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<TrainCodeChallenge>();
             return responseResult;
@@ -94,7 +93,7 @@ namespace Codewars.API
         /// <returns>Task that will yield the AttemptSolutionResponse</returns>
         public async Task<AttemptSolutionResponse> AttemptSolution(string projectId, string solutionId, string code, OutputFormats outputFormat = OutputFormats.Html)
         {
-            var response = await _client.PostAsync(string.Format("code-challenges/projects/{0}/solutions/{1}/attempt", projectId, solutionId), new { projectId, solutionId }, JsonFormatter);
+            var response = await _client.PostAsync($"code-challenges/projects/{projectId}/solutions/{solutionId}/attempt", new { projectId, solutionId }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<AttemptSolutionResponse>();
             return responseResult;
@@ -108,7 +107,7 @@ namespace Codewars.API
         /// <returns>Task that will yield the TrainCodeChallenge.</returns>
         public async Task<TrainCodeChallenge> FinalizeSolution(string projectId, string solutionId)
         {
-            var response = await _client.PostAsync(string.Format("code-challenges/projects/{0}/solutions/{1}/finalize", projectId, solutionId), new { projectId, solutionId }, JsonFormatter);
+            var response = await _client.PostAsync($"code-challenges/projects/{projectId}/solutions/{solutionId}/finalize", new { projectId, solutionId }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<TrainCodeChallenge>();
             return responseResult;
@@ -121,7 +120,7 @@ namespace Codewars.API
         /// <returns>Task that will yield the DeferredResponse</returns>
         public async Task<DeferredResponse> GetDeferredResponse(string dmId)
         {
-            var response = await _client.GetAsync(string.Format("deferred/{0}", dmId));
+            var response = await _client.GetAsync($"deferred/{dmId}");
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<DeferredResponse>();
             return responseResult;
