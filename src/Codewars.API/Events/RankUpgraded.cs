@@ -6,7 +6,7 @@ namespace Codewars.API
     /// The user’s rank has been upgraded. Could be a global rank, or a language rank
     /// </summary>
     [DataContract]
-    public class RankUpgraded
+    public class RankUpgraded : IEvent
     {
         /// <summary>
         /// The Type of event that occurred.
