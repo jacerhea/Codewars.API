@@ -32,9 +32,10 @@ namespace Codewars.API
         /// This endpoint returns information about a specific user.
         /// </summary>
         /// <param name="userName">Id or username</param>
-        /// <returns>Task that will yield information about a specific user</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield information about a specific user</returns>
         public async Task<User> GetUser(string userName)
         {
+            if (userName == null) throw new ArgumentNullException(nameof(userName));
             var response = await _client.GetAsync("users" + $"/{userName}");
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<User>();
@@ -45,7 +46,7 @@ namespace Codewars.API
         /// This endpoint returns information about a specific code challenge (kata).
         /// </summary>
         /// <param name="userNameOrSlug"></param>
-        /// <returns>Task that will yield information about a specific code challenge (kata)</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield information about a specific code challenge (kata)</returns>
         public async Task<CodeChallenge> GetCodeChallenge(string userNameOrSlug)
         {
             var response = await _client.GetAsync("code-challenges" + $"/{userNameOrSlug}");
@@ -60,7 +61,7 @@ namespace Codewars.API
         /// <param name="language">REQUIRED: The programming language you wish to train on</param>
         /// <param name="strategy">OPTIONAL: The strategy to use for choosing what the next code challenge should be.</param>
         /// <param name="peek">OPTIONAL: true if you only want to peek at the next item in your queue, without removing it from the queue or beginning a new training session.</param>
-        /// <returns>Task that will yield the TrainCodeChallenge</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield the TrainCodeChallenge</returns>
         public async Task<TrainCodeChallenge> BeginNextTrainingSession(string language, StrategyTypes? strategy = null, bool peek = false)
         {
             if (language == null) { throw new ArgumentNullException(nameof(language)); }
@@ -75,7 +76,7 @@ namespace Codewars.API
         /// This endpoint begins a new training session for the specified code challenge (kata)
         /// </summary>
         /// <param name="language">The programming language you wish to train on.</param>
-        /// <returns>Task that will yield the TrainCodeChallenge</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield the TrainCodeChallenge</returns>
         public async Task<TrainCodeChallenge> BeginTrainingSession(LanguageTypes language)
         {
             var response = await _client.PostAsync($"code-challenges/{language}", new { language }, JsonFormatter);
@@ -91,9 +92,11 @@ namespace Codewars.API
         /// <param name="solutionId">This ID value will be needed when submitting a solution.</param>
         /// <param name="code">The code that you is being submitted</param>
         /// <param name="outputFormat">The output format to be used. By default, html is used. raw can also be specified.</param>
-        /// <returns>Task that will yield the AttemptSolutionResponse</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield the AttemptSolutionResponse</returns>
         public async Task<AttemptSolutionResponse> AttemptSolution(string projectId, string solutionId, string code, OutputFormats outputFormat = OutputFormats.Html)
         {
+            if (projectId == null) throw new ArgumentNullException(nameof(projectId));
+            if (solutionId == null) throw new ArgumentNullException(nameof(solutionId));
             var response = await _client.PostAsync($"code-challenges/projects/{projectId}/solutions/{solutionId}/attempt", new { projectId, solutionId }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<AttemptSolutionResponse>();
@@ -105,9 +108,11 @@ namespace Codewars.API
         /// </summary>
         /// <param name="projectId">This ID value will be needed when submitting a solution.</param>
         /// <param name="solutionId">This ID value will be needed when submitting a solution.</param>
-        /// <returns>Task that will yield the TrainCodeChallenge.</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield the TrainCodeChallenge.</returns>
         public async Task<TrainCodeChallenge> FinalizeSolution(string projectId, string solutionId)
         {
+            if (projectId == null) throw new ArgumentNullException(nameof(projectId));
+            if (solutionId == null) throw new ArgumentNullException(nameof(solutionId));
             var response = await _client.PostAsync($"code-challenges/projects/{projectId}/solutions/{solutionId}/finalize", new { projectId, solutionId }, JsonFormatter);
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<TrainCodeChallenge>();
@@ -118,9 +123,10 @@ namespace Codewars.API
         /// This endpoint is used for polling for a deferred response. This is to be used in conjunction with the attempt endpoint.
         /// </summary>
         /// <param name="dmId"></param>
-        /// <returns>Task that will yield the DeferredResponse</returns>
+        /// <returns cref="System.Threading.Tasks.Task">Task that will yield the DeferredResponse</returns>
         public async Task<DeferredResponse> GetDeferredResponse(string dmId)
         {
+            if (dmId == null) throw new ArgumentNullException(nameof(dmId));
             var response = await _client.GetAsync($"deferred/{dmId}");
             response.EnsureSuccessStatusCode();
             var responseResult = await response.Content.ReadAsAsync<DeferredResponse>();

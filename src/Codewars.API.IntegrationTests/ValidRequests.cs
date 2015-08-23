@@ -34,7 +34,6 @@ namespace Codewars.API.IntegrationTests
             var responseById = client.GetCodeChallenge(codeChallenge.Id).Result;
 
             Assert.IsTrue(true);
-            
         }
 
         [TestMethod]
