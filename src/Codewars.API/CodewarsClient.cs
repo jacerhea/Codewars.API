@@ -13,7 +13,7 @@ namespace Codewars.API
     {
         private readonly HttpClient _client;
         private static readonly JsonMediaTypeFormatter JsonFormatter = new JsonMediaTypeFormatter();
-        const string CodewarsComApiV1 = "https://www.codewars.com/api/v1/";
+        const string CodewarsComApiV1 = "http://dev.codewars.com/#rest-api";
 
 
         /// <summary>
