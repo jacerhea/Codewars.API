@@ -14,8 +14,7 @@ namespace Codewars.API.IntegrationTests
         public void GetUserReturnsExpectedInformation()
         {
             var client = new CodewarsClient(ApiKey);
-            var response = client.GetUser("jacerhea");
-            var userResponse = response.Result;
+            var userResponse = client.GetUser("jacerhea").Result;
             Assert.AreEqual("Monadic Software", userResponse.Clan);
             Assert.IsNotNull(userResponse.CodeChallenges);
             Assert.IsNotNull(userResponse.Ranks.Languages.Javascript);
